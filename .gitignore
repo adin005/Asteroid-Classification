@@ -1,3 +1,4 @@
+
 # Python
 .venv/
 __pycache__/
@@ -15,3 +16,30 @@ frontend/.angular/
 .DS_Store
 Thumbs.db
 *.log
+=======
+# Python virtual environment
+venv/
+
+# Large dataset
+dataset.csv
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Saved model files
+results/*.pkl
+results/*.pt
+
+# Local environment / secrets
+.env
+
+# Editor files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
