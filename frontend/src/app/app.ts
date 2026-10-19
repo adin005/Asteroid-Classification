@@ -11,6 +11,7 @@ import { PredictionService, PredictionResponse } from './prediction.service';
 })
 export class App {
   readonly fields = FEATURES;
+  readonly deployedStatic = !['localhost', '127.0.0.1'].includes(window.location.hostname);
   values: Record<string, number | string | null> = {};
   loading = signal(false);
   error = signal('');
@@ -24,6 +25,10 @@ export class App {
   submit() {
     this.error.set('');
     this.result.set(null);
+        if (this.deployedStatic) {
+      this.error.set('Static GitHub Pages demo: run Flask and Angular locally to get predictions.');
+      return;
+    }
 
     const payload: Record<string, number | null> = {};
     for (const field of this.fields) {

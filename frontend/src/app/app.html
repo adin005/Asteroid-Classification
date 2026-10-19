@@ -3,6 +3,10 @@
     <h1>Hazardous Asteroid Classifier</h1>
     <p>Teaching prototype: Random Forest trained on the NASA JPL asteroid dataset</p>
   </header>
+    @if (deployedStatic) {
+    <aside class="notice">Static GitHub Pages demonstration only.
+      Predictions require Flask and Angular running locally.</aside>
+  }
 
   <form (ngSubmit)="submit()">
     <h2>Orbital and physical features ({{ fields.length }})</h2>
@@ -14,7 +18,7 @@
         </label>
       }
     </div>
-    <button type="submit" [disabled]="loading()">
+    <button type="submit" [disabled]="loading() || deployedStatic">
       {{ loading() ? 'Predicting...' : 'Run prediction' }}
     </button>
   </form>

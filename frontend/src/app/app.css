@@ -11,3 +11,4 @@ button { background: #17659a; color: white; border: 0; border-radius: 7px;
 button:disabled { opacity: .55; cursor: not-allowed; }
 .error { color: #a01728; font-weight: bold; }
 .result { margin-top: 24px; background: #edf6fc; padding: 18px; border-radius: 8px; }
+.notice { background: #fff4d6; padding: 14px; border-radius: 6px; }
