@@ -1,0 +1,34 @@
+<main class="shell">
+  <header>
+    <h1>Hazardous Asteroid Classifier</h1>
+    <p>Teaching prototype: Random Forest trained on the NASA JPL asteroid dataset</p>
+  </header>
+
+  <form (ngSubmit)="submit()">
+    <h2>Orbital and physical features ({{ fields.length }})</h2>
+    <div class="grid">
+      @for (field of fields; track field.name) {
+        <label>{{ field.label }}
+          <input type="number" step="any" [name]="field.name"
+                 [(ngModel)]="values[field.name]" />
+        </label>
+      }
+    </div>
+    <button type="submit" [disabled]="loading()">
+      {{ loading() ? 'Predicting...' : 'Run prediction' }}
+    </button>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  @if (result(); as r) {
+    <section class="result">
+      <h2>Prediction result</h2>
+      <p><strong>{{ r.label }}</strong></p>
+      <p>Hazardous probability: {{ (r.hazardous_probability * 100).toFixed(1) }}%</p>
+      <p>{{ r.disclaimer }}</p>
+    </section>
+  }
+</main>
